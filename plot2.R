@@ -13,8 +13,11 @@ chosenDate <- rbind(fulldata[fulldata$Date == "2007-02-01",], fulldata[fulldata$
 ## substracting DateTime and Global Acitve Power data
 Plot2Data <- chosenDate %>% mutate(DateTime = as.POSIXct(strptime(paste(Date, Time), "%Y-%m-%d %H:%M:%S"))) %>% select(DateTime, Global_active_power)
 
+## printing png file
+png(filename = "plot2.png", width = 480, height = 480, units = "px")
+
 ## plotting data
 with(Plot2Data, plot(Global_active_power ~ DateTime, type = "l", ylab = "Global Active Power (kilowatts)"))
 
-## printing png file
-png(filename = "plot2.png", width = 480, height = 480, units = "px")
+## closing plotted file
+dev.off()

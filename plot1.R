@@ -10,8 +10,11 @@ fulldata$Date <- as.Date(fulldata$Date, "%d/%m/%Y")
 ## substracting chosen date
 chosenDate <- rbind(fulldata[fulldata$Date == "2007-02-01",], fulldata[fulldata$Date == "2007-02-02",])
 
+## printing png file
+png(filename = "plot1.png", width = 480, height = 480, units = "px")
+
 ## drawing histogram 
 hist(chosenDate$Global_active_power, col = "red", xlab = "Global Active Power (kilowatts)", main = "Global Active Power")
 
-## printing png file
-png(filename = "plot1.png", width = 480, height = 480, units = "px")
+## closing plotted file
+dev.off()
